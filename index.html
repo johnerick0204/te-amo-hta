@@ -20,7 +20,7 @@
     position: relative;
   }
 
-  /* Login */
+ 
   .login-box {
     text-align: center;
     background: #111;
@@ -64,7 +64,7 @@
     position: relative;
   }
 
-  /* Polaroid */
+  
   .polaroid {
     background: white;
     border: 4px solid #fff;
@@ -128,7 +128,7 @@
     margin-bottom: 15px;
   }
 
-  /* Mensagem com fade-in e slide */
+  
   .message {
     background: #111;
     color: #f1f1f1;
@@ -170,7 +170,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Corações flutuando */
+  
   .heart {
     position: absolute;
     color: red;
@@ -234,13 +234,13 @@ function checkPassword() {
   }
 }
 
-// Mensagem principal
+
 function revealMessage(){
   const msg = document.getElementById("message");
   msg.classList.add("show"); // fade + slide
 }
 
-// Slideshow crossfade
+
 const images = document.querySelectorAll(".photo-container img");
 let current = 0;
 setInterval(()=>{
@@ -250,7 +250,7 @@ setInterval(()=>{
   current = next;
 }, 3000);
 
-// Digitação "Te amo ❤️"
+
 const text = "Te amo ❤️";
 let index = 0;
 function startTypingEffect() {
@@ -264,7 +264,7 @@ function startTypingEffect() {
   }, 150);
 }
 
-// Corações flutuando
+
 function spawnHearts() {
   setInterval(() => {
     const heart = document.createElement("div");
@@ -276,10 +276,11 @@ function spawnHearts() {
   }, 500);
 }
 
-// Mensagem secreta ao clicar na polaroid
+
 function showSecretMessage(){
   alert("Você é a melhor parte da minha vida ❤️");
 }
 </script>
 </body>
 </html>
+
