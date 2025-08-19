@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surpresa ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #000;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: white;
+    }
+
+    .login-box {
+      text-align: center;
+      background: #111;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+    }
+
+    .login-box input {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-top: 10px;
+      width: 80%;
+      text-align: center;
+    }
+
+    .login-box button {
+      margin-top: 15px;
+      background: #e63946;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .login-box button:hover {
+      background: #c91d30;
+    }
+
+    .container {
+      display: none; /* escondido até colocar a senha */
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+      z-index: 1;
+    }
+
+    .polaroid {
+      background: white;
+      padding: 15px 15px 40px 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(255,255,255,0.15);
+      margin-bottom: 20px;
+      animation: zoomIn 1.5s ease-in-out;
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .polaroid img.active {
+      opacity: 1;
+    }
+
+    .caption {
+      margin-top: 12px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+      color: #000;
+    }
+
+    .message {
+      background: #111;
+      color: #f1f1f1;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: justify;
+      display: none;
+    }
+
+    .reveal-btn {
+      margin-top: 15px;
+      background: #e63946;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .reveal-btn:hover {
+      background: #c91d30;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box" id="loginBox">
+    <h2>Digite a senha 🔒</h2>
+    <input type="password" id="passwordInput" placeholder="Senha">
+    <br>
+    <button onclick="checkPassword()">Entrar</button>
+    <p id="errorMsg" style="color: #e63946; display:none; margin-top:10px;">Senha incorreta!</p>
+  </div>
+
+  <div class="container" id="mainContent">
+    <div class="polaroid">
+      <img src="foto1.png" class="active" alt="Foto 1">
+      <img src="foto2.png" alt="Foto 2">
+      <img src="foto3.png" alt="Foto 3">
+      <img src="foto4.png" alt="Foto 4">
+      <div class="caption">Te amo ❤️</div>
+    </div>
+
+    <button class="reveal-btn" onclick="revealMessage()">Ver mensagem</button>
+
+    <div class="message" id="message">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel nisl nec sapien tincidunt tincidunt. 
+      Fusce eget augue ut turpis viverra aliquam. Donec eget ligula ut quam facilisis tincidunt. 
+      Curabitur eu justo eros. Aliquam erat volutpat. 
+    </div>
+  </div>
+
+  <script>
+    const CORRECT_PASSWORD = "2030";
+
+    function checkPassword() {
+      const input = document.getElementById("passwordInput").value;
+      if (input === CORRECT_PASSWORD) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+      } else {
+        document.getElementById("errorMsg").style.display = "block";
+      }
+    }
+
+    function revealMessage() {
+      document.getElementById("message").style.display = "block";
+    }
+
+    // Slideshow com crossfade contínuo
+    const images = document.querySelectorAll(".polaroid img");
+    let current = 0;
+
+    setInterval(() => {
+      const next = (current + 1) % images.length;
+      images[current].classList.remove("active");
+      images[next].classList.add("active");
+      current = next;
+    }, 4000); // cada 4 segundos, fade de 2s
+  </script>
+</body>
+</html>
